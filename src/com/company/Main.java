@@ -52,6 +52,12 @@ public class Main {
     {
         fork_wcsv.init(forkedFilePath);
         contributes_wcsv.init(contributesFilePath);
+        String header1 = String.format("%-64.64s", "Repository Name");
+        String header2 = String.format("%-64.64s", "Username");
+        String header3 = String.format("%-32.32s","Contribution Quantity");
+        String header4 = String.format("%-32.32s","Users Follower Quantity");
+        contributes_wcsv.write(header1+""+header2+""+header3+""+header4);
+        contributes_wcsv.write("");
         repoHttpRequest(organization_name);
 
     }
@@ -192,13 +198,7 @@ public class Main {
             System.out.println("limit exceeded");
         }
         else {
-            String header1 = String.format("%-64.64s", "Repository Name");
-            String header2 = String.format("%-64.64s", "Username");
-            String header3 = String.format("%-32.32s","Contribution Quantity");
-            String header4 = String.format("%-32.32s","Users Follower Quantity");
 
-            contributes_wcsv.write(header1+""+header2+""+header3+""+header4);
-            contributes_wcsv.write("");
             JSONArray contributes = new JSONArray(responseBody);
 
             for(int j=count;j<count+1;j++){
